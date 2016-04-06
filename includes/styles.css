@@ -1,0 +1,19 @@
+#sortdiv {	background : #fff;  
+		padding : 10px;
+		max-width : 500px;
+}
+
+#sortdiv * li {  padding: 3px; margin : 3px; box-sizing : border-box;}
+
+
+.ui-sortable > li {
+			border : 1px solid blue;
+			box-shadow: 3px 3px 2px #888888;
+			}
+			
+.ul-hover > li {
+			border : 1px dotted blue;
+			background : #ffd;
+			}
+			
+

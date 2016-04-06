@@ -30,7 +30,7 @@ public function __construct( $a , $parent, $order_by ) {   // pass the construct
 	}
 
 	public function li_html ($max_depth=10) {
-		$returnHTML="<li id='$this->id' class='depth-$this->depth'>";
+		$returnHTML="<li id='item_$this->id' class='depth-$this->depth'>";
 		$returnHTML.=" $this->name :  $this->price ";
 		$returnHTML.= ($max_depth=0) ? '' : $this->children->list_html($max_depth--);
 		$returnHTML.="</li>";

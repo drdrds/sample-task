@@ -3,12 +3,16 @@
 Class itemlist {
 
 	public $items; // Array of item objects comprising this level of heirachy;
-	public $order_by; // How the list items are ordered; 
+	public $order_by; // How the list items are ordered;
+	protected $parent; // the parent item;
+	protected $parent_id; // the parent_id;
 	
 
 	public function __construct(  $order_by="NAME ASC", $parent=null ) {
 	
 		$this->order_by=$order_by;
+		$this->parent=$parent;
+		$this->parent_id =  (is_null($parent)) ? 0 : $parent->id;
 		$this->items=$this->load_items( $parent );
 	
 	}
@@ -17,9 +21,7 @@ Class itemlist {
 	
 		$db=Items_App::$db;
 		
-		$parent_id =  (is_null($parent)) ? 0 : $parent->id;
-		
-		$sql="SELECT * FROM items WHERE parent_id=$parent_id ORDER BY $this->order_by";
+		$sql="SELECT * FROM items WHERE parent_id=$this->parent_id ORDER BY $this->order_by";
 	
 		$r = $db->query($sql);
 		if ($db->num_rows($r) > 0) {
@@ -34,7 +36,7 @@ Class itemlist {
 	}
 	
 	public function list_html ( $max_depth=10) {
-			$returnHTML="<ul>";
+			$returnHTML="<ul id='ul-$this->parent_id'>";
 			for ($i=0 ; $i < count($this->items); $i++) {
 				$returnHTML.=$this->items[$i]->li_html();
 			}

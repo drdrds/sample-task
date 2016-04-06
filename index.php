@@ -20,7 +20,9 @@ $sla = new Items_App();  // initialise the "app" and load the classes
 ?>
 <div class="container">
 	
-	<p>Please read my email to learn about why I did things the way I did, the challenges I had producing this code, and what I plan to change in the next version. </p>
+	<div id="sort-help" class="alert alert-info">
+  <strong>New:</strong> I've added a Jquery UI to allow sorting of the list elements - please <a href="sort-items.php"> try it out</a>!
+</div>
 	
 	
 	<p>The Item List Object is a  hierachy of items - that are loaded from the database using indirect recursion.</p>
